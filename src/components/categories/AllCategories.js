@@ -30,13 +30,13 @@ export const AllCategories = () => {
 // return a map through the categories array that will have 
 // edit and delete buttons  
     return <>
-        <div>AllCategories Page</div>
+        <div>All Categories Page</div>
         <div className="CreateNewCategoryFormContainer">
             <NewCategoryForm getCategories={getCategories} />
         </div>
         {categories.map((category) => {
             return <div key={`category--${category.id}`}>{category.label}
-                <button>edit</button> <button>delete</button>
+                <button>Edit</button> <button>Delete</button>
             </div>
         })}
 
