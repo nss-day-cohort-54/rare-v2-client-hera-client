@@ -75,7 +75,7 @@ export const NewCategoryForm = ({ getCategories }) => {
                             <>
                                 <fieldset>
                                     <div className="form-group">
-                                        <label htmlFor="category">Create a new category</label>
+                                        <label htmlFor="category">Create a New Category</label>
                                         <input
                                             required autoFocus
                                             type="text" id="category"
