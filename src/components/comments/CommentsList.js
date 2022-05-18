@@ -51,7 +51,7 @@ export const CommentList = ({ postId }) => {
 
 
     return <>
-    comments
+    <b>Comments:</b>
     {/* <CommentForm postId={postId} /> */}
     <CommentForm postId={postId} getComments={getComments}/>
     {/* 
