@@ -1,6 +1,10 @@
-import { getAllTags } from "./TagManager"
+import { getAllTags, deleteTag } from "./TagManager"
 import React, { useEffect, useState } from "react";
 import { NewTagForm } from "./CreateTagForm";
+import { Link } from "react-router-dom";
+
+
+
 export const AllTags = () => {
 
     const [tags, setTags] = useState([])
@@ -19,11 +23,17 @@ export const AllTags = () => {
     return <>
         <div>AllTags Page</div>
         <div className="CreateNewTagFormContainer">
-            <NewTagForm getTags={getTags} />
+            <Link to={`/tags/new`}>
+            <button>NEW TAG</button>
+            </Link>
         </div>
         {tags.map((tag) => {
             return <div key={`tag--${tag.id}`}>{tag.label} 
-            <button>edit</button> <button>delete</button>
+            <Link to={`/editTag/${tag.id}`}>
+            <button>edit</button> 
+            </Link>
+            
+            <button  onClick={() => deleteTag(tag).then(getTags)}>delete</button>
             </div>
         })}
 
