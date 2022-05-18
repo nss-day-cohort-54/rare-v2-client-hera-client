@@ -43,3 +43,12 @@ export const putCategory = (category, id) => {
   })
       .then(getAllCategories);
 }
+
+export const deleteCategory = (id) => {
+  return fetch(`${API}/categories/${id}`, {
+      method: "DELETE",
+      headers:{
+          "Authorization": `Token ${localStorage.getItem("token")}`
+      }
+  })
+}
