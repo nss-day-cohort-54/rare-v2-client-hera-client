@@ -14,6 +14,7 @@ import { SinglePost } from "./posts/SinglePost.js"
 import { EditTag } from "./tags/editTag.js"
 import { NewTagForm } from "./tags/CreateTagForm.js"
 
+import { NewCategoryForm } from "./categories/CreateCategoryForm.js"
 
 export const ApplicationViews = () => {
   return (
@@ -66,6 +67,9 @@ export const ApplicationViews = () => {
       </Route> */}
       <Route exact path="/categories">
         <AllCategories />
+      </Route>
+      <Route exact path="/add-category">
+        <NewCategoryForm/>
       </Route>
     </>
   )
