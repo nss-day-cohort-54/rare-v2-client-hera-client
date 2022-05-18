@@ -13,16 +13,17 @@ import { getCommentsByPostId } from "./CommentManager"
 // export component CommentList that is a single post's comments
 
 // From Individual Post Component
-    // <CommentList postId={id} /> - displayed on a boolean
+// <CommentList postId={id} /> - displayed on a boolean
 export const CommentList = ({ postId }) => {
     // declare state variable for comments array
     // const [comments, setComments] = useState([])
     const [comments, setComments] = useState([])
+
     // useEffect that pulls comments by postId
 
     useEffect(
         () => {
-            if(postId) {
+            if (postId) {
                 getComments(postId)
             }
         },
@@ -43,29 +44,29 @@ export const CommentList = ({ postId }) => {
 
     // any other functions?
     // deleteComment
-        // takes commentId param
-        // invokes fetch function deleteComment()
+    // takes commentId param
+    // invokes fetch function deleteComment()
 
     // addComment
-        // builds proper comment
+    // builds proper comment
 
 
     return <>
-    <b>Comments:</b>
-    {/* <CommentForm postId={postId} /> */}
-    <CommentForm postId={postId} getComments={getComments}/>
-    {/* 
+
+        {/* <CommentForm postId={postId} /> */}
+        <CommentForm postId={postId} getComments={getComments} />
+        {/* 
         map over comments and invoke comment component
         other needed JSX tags for styling
     */}
-    {
-        comments.map(comment => {
-            let currentAuthor = comment.user.id === parseInt(localStorage.getItem("token"))
-            return <div key={`comment--${comment.id}`}>
+        {
+            comments.map(comment => {
+                let currentAuthor = comment.user.id === parseInt(localStorage.getItem("token"))
+                return <div key={`comment--${comment.id}`}>
                     <Comment postId={postId} commentObject={comment} currentAuthor={currentAuthor} getComments={getComments} />
                 </div>
-        })
-    }
-    
+            })
+        }
+
     </>
 }
