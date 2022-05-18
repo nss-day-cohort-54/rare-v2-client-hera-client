@@ -26,7 +26,7 @@ export const AllCategories = () => {
         <div>All Categories</div>
         {categories.map((category) => {
             return <div key={`category--${category.id}`}>{category.label}
-                <button>Edit</button> <button>Delete</button>
+                <button id="btn" onClick={() => history.push(`/edit-category/${category.id}`)}>Edit</button> <button>Delete</button>
             </div>
         })}
         <div className="CreateNewCategoryFormContainer">
