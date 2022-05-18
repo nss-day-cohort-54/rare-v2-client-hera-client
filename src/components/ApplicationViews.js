@@ -12,6 +12,7 @@ import { MyPosts } from "./posts/MyPosts.js"
 import { PostsByUser } from "./posts/PostsByUser.js"
 import { SinglePost } from "./posts/SinglePost.js"
 import { NewCategoryForm } from "./categories/CreateCategoryForm.js"
+import { EditCategoryForm } from "./categories/EditCategoryForm.js"
 
 export const ApplicationViews = () => {
   return (
@@ -55,6 +56,9 @@ export const ApplicationViews = () => {
       </Route>
       <Route exact path="/add-category">
         <NewCategoryForm/>
+      </Route>
+      <Route exact path="/edit-category/:categoryId(\d+)">
+        <EditCategoryForm/>
       </Route>
     </>
   )
