@@ -2,12 +2,13 @@ import { getAllPosts, searchPostCategories, searchPostTitles, getPostsByTag } fr
 import { getUserPosts } from "./PostManager"
 import React, { useEffect, useState } from "react";
 import { Post } from "./Post";
+import { useHistory } from "react-router-dom";
 
 
 
 
 export const AllPosts = () => {
-
+    const history = useHistory()
     const [posts, setPosts] = useState([])
     // const [users, setUsers] = useState([])
     // const [filter, setFilterType] = useState({ type: "all", value: "" })
@@ -69,6 +70,11 @@ export const AllPosts = () => {
                 </section>
             })
         }
+        <button className="newPostButton"
+                onClick={() => {
+                    history.push({ pathname: "/newPost" })
+                }}
+            >New Post</button>
     </article>
         {/* filter by title jsx */}
         {/* <fieldset id="titleSearchField">
