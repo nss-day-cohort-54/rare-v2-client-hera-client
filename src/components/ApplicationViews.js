@@ -5,12 +5,12 @@ import { AllPosts } from "./posts/AllPosts.js"
 import { UserList } from "./users/UserList.js"
 import { AllTags } from "./tags/AllTags.js"
 import { AllCategories } from "./categories/AllCategories"
-
 import { User } from "./users/User.js"
 import { CreatePosts } from "./posts/CreatePosts.js"
 import { MyPosts } from "./posts/MyPosts.js"
 import { PostsByUser } from "./posts/PostsByUser.js"
 import { SinglePost } from "./posts/SinglePost.js"
+import { CommentList } from "./comments/CommentsList.js"
 
 export const ApplicationViews = () => {
   return (
@@ -51,6 +51,9 @@ export const ApplicationViews = () => {
       </Route> */}
       <Route exact path="/categories">
         <AllCategories />
+      </Route>
+      <Route exact path="/comments">
+        <CommentList />
       </Route>
     </>
   )
