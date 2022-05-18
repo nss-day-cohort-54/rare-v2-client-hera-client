@@ -3,7 +3,12 @@ import { Settings } from "../utils/Settings"
 
 
 export const getAllPosts = () => {
-  return fetch(`${Settings.API}/posts`)
+  return fetch(`${Settings.API}/posts`,
+  {
+    headers:{
+        "Authorization": `Token ${localStorage.getItem("token")}`
+    }
+  })
     .then((res) => res.json())
 }
 
