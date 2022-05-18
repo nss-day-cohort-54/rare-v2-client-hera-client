@@ -11,6 +11,7 @@ import { MyPosts } from "./posts/MyPosts.js"
 import { PostsByUser } from "./posts/PostsByUser.js"
 import { SinglePost } from "./posts/SinglePost.js"
 import { CommentList } from "./comments/CommentsList.js"
+import { NewCategoryForm } from "./categories/CreateCategoryForm.js"
 
 export const ApplicationViews = () => {
   return (
@@ -54,6 +55,9 @@ export const ApplicationViews = () => {
       </Route>
       <Route exact path="/comments">
         <CommentList />
+        </Route>
+      <Route exact path="/add-category">
+        <NewCategoryForm/>
       </Route>
     </>
   )
