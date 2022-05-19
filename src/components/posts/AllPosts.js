@@ -5,14 +5,11 @@ import { Post } from "./Post";
 import { useHistory } from "react-router-dom";
 
 
-
-
 export const AllPosts = () => {
     const history = useHistory()
     const [posts, setPosts] = useState([])
     // const [users, setUsers] = useState([])
     // const [filter, setFilterType] = useState({ type: "all", value: "" })
-
 
     useEffect(
         () => {
@@ -21,9 +18,6 @@ export const AllPosts = () => {
         },
         []
     )
-
-   
-
 
     // useEffect(() => {
     //     if (filter.type === "all") {
@@ -55,19 +49,14 @@ export const AllPosts = () => {
     <>
     <h2> All Posts </h2>
     <article className="posts">
-
-{/*Add user to post serializer to get the user field on post */}
         {
             posts.map(post => {
-                return <section key={`post--${post.id}`} className="post">
-                    <div className="post__title"> Title: {post.title}</div>
+                return <><section key={`post--${post.id}`} className="post">
+                    <div>Title: <a href={`/posts/single/${post.id}`} className="post__title"> {post.title}</a></div>
                     <div className="post__publication_date"> Published on: {post.publication_date}</div>
                     <div className="post__author"> Published by: {post.user.user.username}</div>
                     <div className="post__category"> Category: {post.category.label}</div>
-                    
-
-
-                </section>
+                </section></> 
             })
         }
         <button className="newPostButton"
