@@ -2,11 +2,13 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 // import { Post } from "./Post"
 import { getSinglePost } from "./PostManager"
+import { useHistory } from "react-router-dom"
 
 
 export const SinglePost = () => {
     const [post, setPost] = useState({})
     const { postId } = useParams()
+    const history = useHistory()
 
     useEffect(
         () => {
@@ -31,6 +33,7 @@ export const SinglePost = () => {
             <div className="post__publication_date"> Published on: {post.publication_date}</div>
             <div className="post__author"> Author: {post.user?.user.username}</div>
             <div className="post__category"> Category: {post.category?.label}</div>
+            <button className="btn" onClick={() => history.push(`/posts/single/${postId}/comments`)}>View Comments</button>
         </section>
 
     </>
