@@ -71,12 +71,12 @@ export const ApplicationViews = () => {
       </Route>
       <Route exact path="/comments">
         <CommentList />
-        </Route>
+      </Route>
       <Route exact path="/add-category">
-        <NewCategoryForm/>
+        <NewCategoryForm />
       </Route>
       <Route exact path="/edit-category/:categoryId(\d+)">
-        <EditCategoryForm/>
+        <EditCategoryForm />
       </Route>
     </>
   )
