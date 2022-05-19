@@ -30,7 +30,7 @@ export const SinglePost = () => {
             <div className="post__title"> Content: {post.content}</div>
             <div className="post__publication_date"> Published on: {post.publication_date}</div>
             <div className="post__author"> Author: {post.user?.user.username}</div>
-            <div className="post__category"> Category: {post.category.label}</div>
+            <div className="post__category"> Category: {post.category?.label}</div>
         </section>
 
     </>
