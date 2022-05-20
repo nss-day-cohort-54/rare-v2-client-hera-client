@@ -1,4 +1,4 @@
-import { getAllPosts, searchPostCategories, searchPostTitles, getPostsByTag } from "./PostManager"
+import { getAllPosts, searchPostCategories, searchPostTitles, getPostsByTag, deletePost } from "./PostManager"
 import { getUserPosts } from "./PostManager"
 import React, { useEffect, useState } from "react";
 import { Post } from "./Post";
@@ -18,6 +18,15 @@ export const AllPosts = () => {
         },
         []
     )
+
+    const deleteThenUpdate = (postId) => {
+        deletePost(postId)
+            .then(() => getAllPosts())
+            .then((data) => setPosts(data))
+    }
+
+
+
 
     // useEffect(() => {
     //     if (filter.type === "all") {
@@ -46,28 +55,34 @@ export const AllPosts = () => {
 
     // useEffect that updates posts, [searchButton]
     return (
-    <>
-    <h2> All Posts </h2>
-    <article className="posts">
-        {
-            posts.map(post => {
-                return <><section key={`post--${post.id}`} className="post">
-                    <div>Title: <a href={`/posts/single/${post.id}`} className="post__title"> {post.title}</a></div>
-                    <div className="post__publication_date"> Published on: {post.publication_date}</div>
-                    <div className="post__author"> Published by: {post.user.user.username}</div>
-                    <div className="post__category"> Category: {post.category.label}</div>
-                    <img className="post__image" src={post.image_url} alt="post_picture"/> 
-                </section></> 
-            })
-        }
-        <button className="newPostButton"
-                onClick={() => {
-                    history.push({ pathname: "/newPost" })
-                }}
-            >New Post</button>
-    </article>
-        {/* filter by title jsx */}
-        {/* <fieldset id="titleSearchField">
+        <>
+            <h2> All Posts </h2>
+            <article className="posts">
+                {
+                    posts.map(post => {
+                        return <><section key={`post--${post.id}`} className="post">
+                            <div>Title: <a href={`/posts/single/${post.id}`} className="post__title"> {post.title}</a></div>
+                            <div className="post__publication_date"> Published on: {post.publication_date}</div>
+                            <div className="post__author"> Published by: {post.user.user.username}</div>
+                            <div className="post__category"> Category: {post.category.label}</div>
+                            <img className="post__image" src={post.image_url} alt="post_picture" />
+                            {post.is_authorized ? (<button id="btn" className="btn-delete" onClick={() => 
+                                { window.confirm('Are you sure you wish to delete this item?') ? deleteThenUpdate(post.id)("confirm") 
+                                : ("cancel") }}>
+                                Delete Post
+                            </button>) : ("")}
+
+                        </section></>
+                    })
+                }
+                <button className="newPostButton"
+                    onClick={() => {
+                        history.push({ pathname: "/newPost" })
+                    }}
+                >New Post</button>
+            </article>
+            {/* filter by title jsx */}
+            {/* <fieldset id="titleSearchField">
             <div className="titleSearch">
                 <input
                     type="text"
@@ -86,9 +101,9 @@ export const AllPosts = () => {
                 </button>
             </div>
         </fieldset> */}
-        {/* filter by category jsx */}
+            {/* filter by category jsx */}
 
-        {/* <fieldset>
+            {/* <fieldset>
             <select
                 className="categoryDropdown"
                 name="categoryId"
@@ -115,10 +130,10 @@ export const AllPosts = () => {
                 })}
             </select>
         </fieldset> */}
-        
-        
-        {/* filter by user jsx */}
-        {/* <fieldset id="authorDropdown">
+
+
+            {/* filter by user jsx */}
+            {/* <fieldset id="authorDropdown">
             <select
                 className="authorDropdown"
                 name="authorId"
@@ -145,8 +160,8 @@ export const AllPosts = () => {
                 })}
             </select>
         </fieldset> */}
-        {/* filter by tag jsx */}
-        {/* <fieldset>
+            {/* filter by tag jsx */}
+            {/* <fieldset>
             <select
                 className="tagDropdown"
                 name="tagId"
@@ -172,7 +187,7 @@ export const AllPosts = () => {
             </select>
         </fieldset> */}
 
-        {/* { <div className="singlePost">
+            {/* { <div className="singlePost">
             <div>Title</div>
             <div>Author</div>
             <div>Publication Date</div>
@@ -191,7 +206,7 @@ export const AllPosts = () => {
         }  */}
 
 
-    </>)
+        </>)
 }
 
 // ADD INTO RETURN STATEMENT ABOVE
