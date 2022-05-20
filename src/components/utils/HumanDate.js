@@ -1,6 +1,6 @@
 export const HumanDate = (date) => {
   console.log(date)
-  return new Date(date).toLocaleTimeString("en-US",
+  return new Date(date).toLocaleDateString("en-US",
     {
       weekday: 'long',
       year: 'numeric',

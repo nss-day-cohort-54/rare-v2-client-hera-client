@@ -30,6 +30,7 @@ export const Comment = ({ post, commentObject, currentAuthor, getComments }) => 
                     author
                 deleteComment displayed if comment author is current user
             */}
+        <div><b>{commentObject.post.title}</b></div>
         <div>{commentObject.content}</div>
         <div>Written by: {commentObject.author.user.username}</div>
         <div>{HumanDate(commentObject.created_on)}</div>
@@ -40,8 +41,8 @@ export const Comment = ({ post, commentObject, currentAuthor, getComments }) => 
                         isPost={false}
                         postId={post.id}
                         commentId={commentObject.id}
-                        getComments={getComments} 
-                        />
+                        getComments={getComments}
+                    />
                 </div>
                 : null
         }

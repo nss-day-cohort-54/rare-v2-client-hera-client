@@ -2,11 +2,13 @@
 // addComment from CommentManager
 import { useState } from "react"
 import { addComment } from "./CommentManager"
+import { useHistory } from "react-router-dom"
 
 // export function that handles comment form entry
 export const CommentForm = ({ postId, getComments }) => {
     // declare state variable for comment to add
     const [newComment, setComment] = useState("")
+    const history = useHistory()
     // should have values
     // post id
     // author of comment id (current user)
@@ -20,8 +22,9 @@ export const CommentForm = ({ postId, getComments }) => {
             copy.content = newComment
             // gets comment content from state
             // adds postId
-            copy.postId = postId.id
-            copy.authorId = parseInt(localStorage.getItem("token"))
+            copy.post = postId
+            copy.created_on = (new Date()).toISOString().split('T')[0],
+                copy.author = parseInt(localStorage.getItem("token"))
             // adds current user id
             // sends to database using function from CommentManager
             addComment(copy)
@@ -45,6 +48,10 @@ export const CommentForm = ({ postId, getComments }) => {
         </textarea><br></br>
         <button className="commentSubmit" onClick={() => submitComment()}>
             Submit Comment
+        </button>
+        <br></br><br></br>
+        <button onClick={() => history.push(`/posts/single/${postId}`)}>
+            Back to Post
         </button>
     </>
 }
