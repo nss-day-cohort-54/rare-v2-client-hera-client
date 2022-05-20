@@ -69,7 +69,7 @@ export const ApplicationViews = () => {
       <Route exact path="/categories">
         <AllCategories />
       </Route>
-      <Route exact path="/posts/single/postId(\d+)/comments">
+      <Route exact path="/posts/single/:postId(\d+)/comments">
         <CommentList />
       </Route>
       <Route exact path="/add-category">

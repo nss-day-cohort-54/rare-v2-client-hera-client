@@ -2,12 +2,13 @@
 // deleteComment from CommentManager.js
 
 import { ButtonControls } from "../buttonControls/ButtonControls"
+import { HumanDate } from "../utils/HumanDate"
 import { Settings } from "../utils/Settings"
 import { deleteComment } from "./CommentManager"
 
 
 // export single comment component
-export const Comment = ({ postId, commentObject, currentAuthor, getComments }) => {
+export const Comment = ({ post, commentObject, currentAuthor, getComments }) => {
     // currentAuthor should be boolean defined where Comment component is invoked
     // true if the current user is the comment's author
     // in JSX, delete comment button is then displayed
@@ -30,15 +31,17 @@ export const Comment = ({ postId, commentObject, currentAuthor, getComments }) =
                 deleteComment displayed if comment author is current user
             */}
         <div>{commentObject.content}</div>
-        <div>{commentObject.user.username}</div>
+        <div>Written by: {commentObject.author.user.username}</div>
+        <div>{HumanDate(commentObject.created_on)}</div>
         {
             currentAuthor
                 ? <div>
                     <ButtonControls
                         isPost={false}
-                        postId={postId}
+                        postId={post.id}
                         commentId={commentObject.id}
-                        getComments={getComments} />
+                        getComments={getComments} 
+                        />
                 </div>
                 : null
         }

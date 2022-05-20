@@ -5,6 +5,7 @@
 // Component for comment form
 
 import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 import { Comment } from "./Comment"
 import { CommentForm } from "./CommentForm"
 import { getCommentsByPostId } from "./CommentManager"
@@ -14,10 +15,11 @@ import { getCommentsByPostId } from "./CommentManager"
 
 // From Individual Post Component
 // <CommentList postId={id} /> - displayed on a boolean
-export const CommentList = ({ postId }) => {
+export const CommentList = () => {
     // declare state variable for comments array
     // const [comments, setComments] = useState([])
     const [comments, setComments] = useState([])
+    const { postId } = useParams()
 
     // useEffect that pulls comments by postId
 
@@ -61,9 +63,8 @@ export const CommentList = ({ postId }) => {
     */}
         {
             comments.map(comment => {
-                let currentAuthor = comment.user.id === parseInt(localStorage.getItem("token"))
                 return <div key={`comment--${comment.id}`}>
-                    <Comment postId={postId} commentObject={comment} currentAuthor={currentAuthor} getComments={getComments} />
+                    <Comment postId={postId} commentObject={comment} getComments={getComments} />
                 </div>
             })
         }
