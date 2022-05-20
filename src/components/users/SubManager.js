@@ -4,6 +4,7 @@ import { Settings } from "../utils/Settings"
 // get all subs by user id
 export const getSubsForFollower = (followerId) => {
     return fetchIt(`${Settings.API}/subscriptions?follower=${followerId}`)
+    .then((res) => res.json())
 }
 
 // post new sub relationship

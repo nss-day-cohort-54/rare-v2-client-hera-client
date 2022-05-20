@@ -28,14 +28,14 @@ export const User = ({ listView, user }) => {
         }, [userId, listView]
     )
 
-    useEffect(
-        () => {
-            if(viewUser) {
-                let count = viewUser.posts.length
-                setPostCount(count)
-            }
-        }, [viewUser]
-    )
+    // useEffect(
+    //     () => {
+    //         if(viewUser) {
+    //             let count = viewUser.posts.length
+    //             setPostCount(count)
+    //         }
+    //     }, [viewUser]
+    // )
         // define state variables
         // maybe get user's articles for the clickable article count?
         // articles, setArticles = useState()
