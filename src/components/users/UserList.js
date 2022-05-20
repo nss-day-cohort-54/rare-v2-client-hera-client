@@ -2,6 +2,7 @@
 // import { User } from "./User"
 // get all users fetch
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { User } from "./User"
 import { getAllUsers } from "./UserManager"
 
@@ -15,10 +16,7 @@ export const UserList = () => {
     // define needed useEffects
     // useEffect(() => getUsers function and set as users state variable, [])
     useEffect(() => {
-        getAllUsers()
-            .then(userData => {
-                setUsers(userData)
-            })
+        getAllUsers().then(userData => {setUsers(userData)})
     }, [])
     // define needed functions
     // will the users have any buttons?
@@ -27,17 +25,22 @@ export const UserList = () => {
 
     // return jsx
     return <>
-    <div className="singleUser">
-        <div>Username</div>
-        <div>First Name</div>
-        <div>Last Name</div>
-        <div>Email</div>
-    </div>
+    
     {
         users.map(user => {
             return <div key={`user-${user.id}`}>
                 <User user={user} listView={true} />
+                <Link to={`/users/${user.id}`} className="userDetails">
+                <button className="userDetails">View Profile</button>
+                </Link>
+                <div className="singleUser">
+                    <div>{user.user.username}</div>
+                    <div>{user.user.first_name}</div>
+                    <div>{user.user.last_name}</div>
+                    <div>{user.user.email}</div>
+                </div>
             </div>
+            
         })
     }
     {/* 
