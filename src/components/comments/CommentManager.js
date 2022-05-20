@@ -6,6 +6,7 @@ export const getCommentsByPostId = (postId) => {
     return fetchIt(`${Settings.API}/comments?post=${postId}`)
 }
 
+
 // deleteComment
 export const deleteComment = (commentId) => {
     return fetchIt(`${Settings.API}/comments/${commentId}`, "DELETE")

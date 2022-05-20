@@ -10,6 +10,7 @@ import { CreatePosts } from "./posts/CreatePosts.js"
 import { MyPosts } from "./posts/MyPosts.js"
 import { PostsByUser } from "./posts/PostsByUser.js"
 import { SinglePost } from "./posts/SinglePost.js"
+import { CommentList } from "./comments/CommentsList.js"
 import { EditTag } from "./tags/editTag.js"
 import { NewTagForm } from "./tags/CreateTagForm.js"
 import { NewCategoryForm } from "./categories/CreateCategoryForm.js"
@@ -64,11 +65,14 @@ export const ApplicationViews = () => {
       <Route exact path="/categories">
         <AllCategories />
       </Route>
+      <Route exact path="/posts/single/:postId(\d+)/comments">
+        <CommentList />
+      </Route>
       <Route exact path="/add-category">
-        <NewCategoryForm/>
+        <NewCategoryForm />
       </Route>
       <Route exact path="/edit-category/:categoryId(\d+)">
-        <EditCategoryForm/>
+        <EditCategoryForm />
       </Route>
     </>
   )
