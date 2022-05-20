@@ -10,6 +10,7 @@ import { Settings } from "../utils/Settings"
 // email
 export const getAllUsers = () => {
     return fetchIt(`${Settings.API}/users`)
+       
 }
 
 // get single user by user id
@@ -17,4 +18,5 @@ export const getAllUsers = () => {
 // user object should have all properties except password
 export const getSingleUser = (id) => {
     return fetchIt(`${Settings.API}/users/${id}`)
+ 
 }
