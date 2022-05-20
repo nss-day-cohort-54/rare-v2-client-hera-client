@@ -33,6 +33,10 @@ export const SinglePost = () => {
             <div className="post__publication_date"> Published on: {post.publication_date}</div>
             <div className="post__author"> Author: {post.user?.user.username}</div>
             <div className="post__category"> Category: {post.category?.label}</div>
+            <div className="post__category"> Tags: {
+                post.tag?.map(t => <li>{t.label}</li>)
+            }</div>
+
             <button className="btn" onClick={() => history.push(`/posts/single/${postId}/comments`)}>View Comments</button>
         </section>
 

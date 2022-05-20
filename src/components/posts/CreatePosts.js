@@ -78,9 +78,9 @@ export const CreatePosts = ({ getPosts, editing }) => {
             image_url: form.imageUrl,
             content: form.content,
             approved: 1,
-            tags: tagsToAdd
+            tag: tagsToAdd
         }
-        if(newPost.title && newPost.image_url && newPost.category && newPost.tags.length > 0) {
+        if(newPost.title && newPost.image_url && newPost.category && newPost.tag.length > 0) {
             if (editing) {
                 newPost.id = parseInt(postId)
                 return fetchIt(`${Settings.API}/posts/${postId}`, "PUT", JSON.stringify(newPost))
