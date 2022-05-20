@@ -49,7 +49,7 @@ export const deletePost = (id) => {
 
 // get posts by user id
 export const getUserPosts = (id) => {
-  return fetchIt(`${Settings.API}/posts?user_id=${id}`)
+  return fetchIt(`${Settings.API}/posts/my_posts`)
 };
 
 export const getPostsByTag = (id) => {
