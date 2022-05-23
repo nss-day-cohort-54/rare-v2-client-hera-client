@@ -66,6 +66,7 @@ export const AllPosts = () => {
                             <div className="post__author"> Published by: {post.user.user.username}</div>
                             <div className="post__category"> Category: {post.category.label}</div>
                             <img className="post__image" src={post.image_url} alt="post_picture" />
+                            {post.is_authorized ? <button className="edit__btn" onClick={() => history.push(`/editPost/${post.id}`)}>Edit Post</button> : ""}
                             {post.is_authorized ? (<button id="btn" className="btn-delete" onClick={() => 
                                 { window.confirm('Are you sure you wish to delete this item?') ? deleteThenUpdate(post.id)("confirm") 
                                 : ("cancel") }}>
