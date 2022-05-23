@@ -5,6 +5,7 @@
 // Component for comment form
 
 import { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { Comment } from "./Comment"
 import { CommentForm } from "./CommentForm"
@@ -20,6 +21,7 @@ export const CommentList = () => {
     // const [comments, setComments] = useState([])
     const [comments, setComments] = useState([])
     const { postId } = useParams()
+    const history = useHistory()
 
     // useEffect that pulls comments by postId
 
@@ -65,6 +67,11 @@ export const CommentList = () => {
             comments.map(comment => {
                 return <div key={`comment--${comment.id}`}>
                     <Comment postId={postId} commentObject={comment} getComments={getComments} />
+                    <button className="button-update"
+                                onClick={() => {
+                                    history.push({ pathname: `/comments/single/${postId}/${comment.id}` })
+                                }}
+                            >Edit/Update Comment</button>
                 </div>
             })
         }

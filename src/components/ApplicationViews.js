@@ -15,6 +15,7 @@ import { EditTag } from "./tags/editTag.js"
 import { NewTagForm } from "./tags/CreateTagForm.js"
 import { NewCategoryForm } from "./categories/CreateCategoryForm.js"
 import { EditCategoryForm } from "./categories/EditCategoryForm.js"
+import { EditComment } from "./comments/EditComment.js"
 
 export const ApplicationViews = () => {
   return (
@@ -68,6 +69,10 @@ export const ApplicationViews = () => {
       <Route exact path="/posts/single/:postId(\d+)/comments">
         <CommentList />
       </Route>
+      <Route exact path="/comments/single/:postId(\d+)/:commentId(\d+)">
+        <EditComment />
+      </Route>
+
       <Route exact path="/add-category">
         <NewCategoryForm />
       </Route>
