@@ -33,6 +33,9 @@ export const getSinglePost = (id) => {
 // body will have stringified json with (post) as arg
 // then getAllPosts
 
+export const putPost = (postId, editPost) => {
+  return fetchIt(`${Settings.API}/posts/${postId}`, "PUT", JSON.stringify(editPost))
+}
 
 // export function that deletes a single post "postId => {"
 // return a fetch with /${postId},
